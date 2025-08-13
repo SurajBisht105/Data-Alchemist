@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import JSZip from 'jszip';
+// import { exportRateLimiter } from '@/lib/utils/rate-limiter';
 
 export async function POST(request: NextRequest) {
+  // Rate limiting - COMMENTED OUT
+  // const clientIp = request.headers.get('x-forwarded-for') || 'anonymous';
+  // const { allowed } = exportRateLimiter.check(clientIp);
+  
+  // if (!allowed) {
+  //   return NextResponse.json(
+  //     { error: 'Export rate limit exceeded' },
+  //     { status: 429 }
+  //   );
+  // }
+
   try {
     const { data, rules, priorities } = await request.json();
     
