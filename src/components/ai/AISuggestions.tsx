@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDataStore } from '@/hooks/useDataStore';
 import { generateAIRules } from '@/lib/ai/rule-recommendations';
 import { Rule } from '@/types/rules.types';
