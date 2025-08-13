@@ -34,7 +34,7 @@ export default function RuleCard({ rule, onUpdate, onRemove }: Props) {
           <div>
             <span className="font-medium">Slot Restriction:</span>
             <div className="mt-1">
-              {rule.parameters.groupType || 'Unknown'} group "{rule.parameters.group || 'Unknown'}" 
+              {rule.parameters.groupType || 'Unknown'} group {rule.parameters.group || 'Unknown'} 
               needs {rule.parameters.minCommonSlots || 0} common slots
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function RuleCard({ rule, onUpdate, onRemove }: Props) {
           <div>
             <span className="font-medium">Load Limit:</span>
             <div className="mt-1">
-              Group "{rule.parameters.group || 'Unknown'}" 
+              Group {rule.parameters.group || 'Unknown'} 
               max {rule.parameters.maxSlotsPerPhase || 0} slots per phase
             </div>
           </div>
