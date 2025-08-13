@@ -53,13 +53,13 @@ export async function POST(request: NextRequest) {
         suggestions,
         count: suggestions.length 
       },
-      {
-        headers: {
-          'X-RateLimit-Limit': '10',
-          'X-RateLimit-Remaining': remaining.toString(),
-          'X-RateLimit-Reset': new Date(resetTime).toISOString()
-        }
-      }
+      // {
+      //   headers: {
+      //     'X-RateLimit-Limit': '10',
+      //     'X-RateLimit-Remaining': remaining.toString(),
+      //     'X-RateLimit-Reset': new Date(resetTime).toISOString()
+      //   }
+      // }
     );
   } catch (error) {
     console.error('AI suggestions error:', error);
@@ -89,15 +89,16 @@ export async function POST(request: NextRequest) {
 
 // Also support GET for checking status
 export async function GET(request: NextRequest) {
-  const clientIp = request.headers.get('x-forwarded-for') || 
-                  request.headers.get('x-real-ip') || 
-                  'anonymous';
-  const status = aiRateLimiter.getStatus(clientIp);
+  // const clientIp = request.headers.get('x-forwarded-for') || 
+  //                 request.headers.get('x-real-ip') || 
+  //                 'anonymous';
+  // const status = aiRateLimiter.getStatus(clientIp);
   
   return NextResponse.json({
     service: 'AI Suggestions',
     status: 'operational',
-    rateLimit: status
+    // rateLimit: status
   });
 }
+
 
