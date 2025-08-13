@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { convertNaturalLanguageToRule } from '@/lib/ai/rule-converter';
 import { generateAIRules } from '@/lib/ai/rule-recommendations';
-import { aiRateLimiter } from '@/lib/utils/rate-limiter';
+// import { aiRateLimiter } from '@/lib/utils/rate-limiter';
 
 export async function POST(request: NextRequest) {
-  const clientIp = request.headers.get('x-forwarded-for') || 'anonymous';
-  const { allowed, remaining } = aiRateLimiter.check(clientIp);
+  // const clientIp = request.headers.get('x-forwarded-for') || 'anonymous';
+  // const { allowed, remaining } = aiRateLimiter.check(clientIp);
   
-  if (!allowed) {
-    return NextResponse.json(
-      { error: 'AI rate limit exceeded' },
-      { status: 429, headers: { 'X-RateLimit-Remaining': '0' } }
-    );
-  }
+  // if (!allowed) {
+  //   return NextResponse.json(
+  //     { error: 'AI rate limit exceeded' },
+  //     { status: 429, headers: { 'X-RateLimit-Remaining': '0' } }
+  //   );
+  // }
 
   try {
     const { action, input, data } = await request.json();
@@ -21,13 +21,13 @@ export async function POST(request: NextRequest) {
       const rule = await convertNaturalLanguageToRule(input);
       return NextResponse.json(
         { rule },
-        { headers: { 'X-RateLimit-Remaining': remaining.toString() } }
+        // { headers: { 'X-RateLimit-Remaining': remaining.toString() } }
       );
     } else if (action === 'recommend') {
       const rules = await generateAIRules(data);
       return NextResponse.json(
         { rules },
-        { headers: { 'X-RateLimit-Remaining': remaining.toString() } }
+        // { headers: { 'X-RateLimit-Remaining': remaining.toString() } }
       );
     }
     
