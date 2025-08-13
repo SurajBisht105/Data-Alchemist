@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { parseFile } from '@/lib/parsers/file-parser';
-import { validateUploadedData } from '@/lib/validators/upload-validator';
 
 interface Props {
   onUpload: (data: any) => void;
