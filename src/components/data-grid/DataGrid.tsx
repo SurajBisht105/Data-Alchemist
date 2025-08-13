@@ -15,9 +15,20 @@ export default function DataGrid({ data, onUpdate, validationResults }: Props) {
   const [filter, setFilter] = useState('');
   const { applySuggestion } = useAI();
 
+  // Convert plural entity type to singular for validation matching
+  const getEntitySingular = (plural: string): 'client' | 'worker' | 'task' => {
+    switch (plural) {
+      case 'clients': return 'client';
+      case 'workers': return 'worker';
+      case 'tasks': return 'task';
+      default: return 'client';
+    }
+  };
+
   const getErrorsForCell = (entityType: string, entityId: string, field: string) => {
+    const singularEntity = getEntitySingular(entityType);
     return validationResults.filter(
-      error => error.entity === entityType && 
+      error => error.entity === singularEntity && 
                error.entityId === entityId && 
                error.field === field
     );
@@ -104,7 +115,12 @@ export default function DataGrid({ data, onUpdate, validationResults }: Props) {
                 })}
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {validationResults
-                    .filter(e => e.entity === activeEntity && e.entityId === item[columns[0]] && e.suggestion)
+                    .filter(e => {
+                      const singularEntity = getEntitySingular(activeEntity);
+                      return e.entity === singularEntity && 
+                             e.entityId === item[columns[0]] && 
+                             e.suggestion;
+                    })
                     .slice(0, 1)
                     .map(error => (
                       <button
