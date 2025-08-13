@@ -27,7 +27,7 @@ export async function parseWithAI(
   return result;
 }
 
-function getSchemaForEntity(entityType: string) {
+function getSchemaForEntity(entityType: 'client' | 'worker' | 'task') {
   const schemas = {
     client: {
       ClientID: 'string',
@@ -55,7 +55,7 @@ function getSchemaForEntity(entityType: string) {
       PreferredPhases: 'array of numbers',
       MaxConcurrent: 'number'
     }
-  };
+  } as const;
   
   return schemas[entityType];
 }
