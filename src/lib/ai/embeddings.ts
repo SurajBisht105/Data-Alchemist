@@ -23,7 +23,7 @@ export async function semanticSearch(
   query: string,
   items: any[],
   textField: string,
-  threshold: number = 0.7
+  // threshold: number = 0.7
 ): Promise<any[]> {
   // For Gemini, we'll use a different approach
   const prompt = `
