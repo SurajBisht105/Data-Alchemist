@@ -43,9 +43,9 @@ export default function NaturalLanguageInput({ onRuleCreated, onClose }: Props) 
           Describe your rule in plain English. For example:
         </p>
         <ul className="text-sm text-gray-500 mt-2 space-y-1">
-          <li>• "Tasks T12 and T14 must always run together"</li>
-          <li>• "Sales workers can only handle 3 tasks per phase"</li>
-          <li>• "High priority clients should be served in phases 1-3"</li>
+          <li>• Tasks T12 and T14 must always run together</li>
+          <li>• Sales workers can only handle 3 tasks per phase</li>
+          <li>• High priority clients should be served in phases 1-3</li>
         </ul>
       </div>
 
