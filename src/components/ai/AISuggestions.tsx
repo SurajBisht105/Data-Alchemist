@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDataStore } from '@/hooks/useDataStore';
-import { generateAIRules } from '@/lib/ai/rule-recommendations';
 import { Rule } from '@/types/rules.types';
 import { useRules } from '@/hooks/useRules';
 
@@ -33,11 +32,25 @@ export default function AISuggestions() {
         hasData
       };
       
-      const rules = await generateAIRules(data);
-      setSuggestions(rules);
+      // Call the API route instead of direct function
+      const response = await fetch('/api/ai/suggestions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ data })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to get suggestions');
+      }
+
+      const result = await response.json();
+      setSuggestions(result.suggestions || []);
     } catch (error) {
       console.error('Failed to get AI suggestions:', error);
-      setError('Failed to generate suggestions. Please try again.');
+      setError(error instanceof Error ? error.message : 'Failed to generate suggestions');
     } finally {
       setLoading(false);
     }
