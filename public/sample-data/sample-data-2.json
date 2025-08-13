@@ -1,0 +1,86 @@
+{
+  "clients": [
+    {
+      "ClientID": "C003",
+      "ClientName": "Healthcare Plus",
+      "PriorityLevel": 4,
+      "RequestedTaskIDs": "T006,T007,T008",
+      "GroupTag": "Healthcare",
+      "AttributesJSON": "{\"compliance\":\"HIPAA\",\"urgency\":\"high\"}"
+    },
+    {
+      "ClientID": "C004",
+      "ClientName": "EduTech Systems",
+      "PriorityLevel": 2,
+      "RequestedTaskIDs": "T009,T010",
+      "GroupTag": "Education",
+      "AttributesJSON": "{\"type\":\"K12\",\"size\":\"medium\"}"
+    },
+    {
+      "ClientID": "C005",
+      "ClientName": "Finance Corp",
+      "PriorityLevel": 5,
+      "RequestedTaskIDs": "T011,T012,T013",
+      "GroupTag": "Premium",
+      "AttributesJSON": "{\"compliance\":\"SOX\",\"critical\":true}"
+    }
+  ],
+  "workers": [
+    {
+      "WorkerID": "W003",
+      "WorkerName": "Carol Davis",
+      "Skills": "Data Analysis,Python,SQL,Machine Learning",
+      "AvailableSlots": "1,2,3,4,5",
+      "MaxLoadPerPhase": 3,
+      "WorkerGroup": "Data Science",
+      "QualificationLevel": 4
+    },
+    {
+      "WorkerID": "W004",
+      "WorkerName": "David Wilson",
+      "Skills": "DevOps,AWS,Docker,Kubernetes",
+      "AvailableSlots": "1,3,5",
+      "MaxLoadPerPhase": 2,
+      "WorkerGroup": "Infrastructure",
+      "QualificationLevel": 4
+    },
+    {
+      "WorkerID": "W005",
+      "WorkerName": "Eve Martinez",
+      "Skills": "UI/UX,Figma,Design Systems",
+      "AvailableSlots": "2,3,4",
+      "MaxLoadPerPhase": 4,
+      "WorkerGroup": "Design",
+      "QualificationLevel": 3
+    }
+  ],
+  "tasks": [
+    {
+      "TaskID": "T006",
+      "TaskName": "Data Pipeline Setup",
+      "Category": "Data Engineering",
+      "Duration": 4,
+      "RequiredSkills": "Python,SQL",
+      "PreferredPhases": "1-4",
+      "MaxConcurrent": 1
+    },
+    {
+      "TaskID": "T007",
+      "TaskName": "ML Model Development",
+      "Category": "Machine Learning",
+      "Duration": 5,
+      "RequiredSkills": "Python,Machine Learning",
+      "PreferredPhases": "2,3,4,5",
+      "MaxConcurrent": 1
+    },
+    {
+      "TaskID": "T008",
+      "TaskName": "Infrastructure Setup",
+      "Category": "DevOps",
+      "Duration": 2,
+      "RequiredSkills": "AWS,Docker",
+      "PreferredPhases": "1,2",
+      "MaxConcurrent": 2
+    }
+  ]
+}

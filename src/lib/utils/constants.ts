@@ -1,0 +1,37 @@
+export const APP_CONFIG = {
+  APP_NAME: 'AI Resource Allocation Configurator',
+  VERSION: '1.0.0',
+  MAX_FILE_SIZE: 10 * 1024 * 1024, // 10MB
+  SUPPORTED_FILE_TYPES: ['.csv', '.xlsx', '.xls'],
+  API_TIMEOUT: 30000, // 30 seconds
+};
+
+export const VALIDATION_TYPES = {
+  MISSING_COLUMN: 'MISSING_COLUMN',
+  DUPLICATE_ID: 'DUPLICATE_ID',
+  OUT_OF_RANGE: 'OUT_OF_RANGE',
+  INVALID_DURATION: 'INVALID_DURATION',
+  MALFORMED_LIST: 'MALFORMED_LIST',
+  BROKEN_JSON: 'BROKEN_JSON',
+  UNKNOWN_REFERENCE: 'UNKNOWN_REFERENCE',
+  SKILL_COVERAGE: 'SKILL_COVERAGE',
+  OVERLOADED_WORKER: 'OVERLOADED_WORKER',
+  MAX_CONCURRENCY_INFEASIBLE: 'MAX_CONCURRENCY_INFEASIBLE',
+  PHASE_SLOT_SATURATION: 'PHASE_SLOT_SATURATION',
+} as const;
+
+export const RULE_TYPES = {
+  CO_RUN: 'coRun',
+  SLOT_RESTRICTION: 'slotRestriction',
+  LOAD_LIMIT: 'loadLimit',
+  PHASE_WINDOW: 'phaseWindow',
+  PRECEDENCE: 'precedence',
+} as const;
+
+export const PRIORITY_CRITERIA = {
+  CLIENT_PRIORITY: 'clientPriority',
+  TASK_COMPLETION: 'taskCompletion',
+  WORKER_BALANCE: 'workerBalance',
+  SKILL_MATCH: 'skillMatch',
+  PHASE_EFFICIENCY: 'phaseEfficiency',
+} as const;

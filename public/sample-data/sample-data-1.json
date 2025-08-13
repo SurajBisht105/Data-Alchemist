@@ -1,0 +1,60 @@
+{
+  "clients": [
+    {
+      "ClientID": "C001",
+      "ClientName": "TechCorp Solutions",
+      "PriorityLevel": 5,
+      "RequestedTaskIDs": "T001,T002,T005",
+      "GroupTag": "Premium",
+      "AttributesJSON": "{\"sector\":\"Technology\",\"contract\":\"Annual\"}"
+    },
+    {
+      "ClientID": "C002",
+      "ClientName": "Global Retail Inc",
+      "PriorityLevel": 3,
+      "RequestedTaskIDs": "T003,T004",
+      "GroupTag": "Standard",
+      "AttributesJSON": "{\"sector\":\"Retail\",\"contract\":\"Monthly\"}"
+    }
+  ],
+  "workers": [
+    {
+      "WorkerID": "W001",
+      "WorkerName": "Alice Johnson",
+      "Skills": "Frontend,React,TypeScript",
+      "AvailableSlots": "1,2,3,4,5",
+      "MaxLoadPerPhase": 4,
+      "WorkerGroup": "Senior Dev",
+      "QualificationLevel": 5
+    },
+    {
+      "WorkerID": "W002",
+      "WorkerName": "Bob Smith",
+      "Skills": "Backend,Node.js,Python",
+      "AvailableSlots": "2,3,4",
+      "MaxLoadPerPhase": 3,
+      "WorkerGroup": "Mid Dev",
+      "QualificationLevel": 3
+    }
+  ],
+  "tasks": [
+    {
+      "TaskID": "T001",
+      "TaskName": "UI Redesign",
+      "Category": "Frontend",
+      "Duration": 3,
+      "RequiredSkills": "Frontend,React",
+      "PreferredPhases": "1-3",
+      "MaxConcurrent": 2
+    },
+    {
+      "TaskID": "T002",
+      "TaskName": "API Development",
+      "Category": "Backend",
+      "Duration": 2,
+      "RequiredSkills": "Backend,Node.js",
+      "PreferredPhases": "2,3,4",
+      "MaxConcurrent": 1
+    }
+  ]
+}

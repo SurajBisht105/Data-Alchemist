@@ -1,0 +1,21 @@
+{
+  "name": "AI Resource Allocation Configurator",
+  "short_name": "Resource Allocator",
+  "description": "Transform messy spreadsheets into clean, validated data with AI-powered assistance",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
