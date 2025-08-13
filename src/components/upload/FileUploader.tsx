@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { parseFile } from '@/lib/parsers/file-parser';
 
+
 interface Props {
   onUpload: (data: any) => void;
 }
@@ -45,9 +46,14 @@ export default function FileUploader({ onUpload }: Props) {
             : f
         ));
       } catch (error) {
+        // Handle the error properly
+        const errorMessage = error instanceof Error 
+          ? error.message 
+          : 'Failed to parse file';
+          
         setFiles(prev => prev.map((f, idx) => 
           idx === fileIndex 
-            ? { ...f, status: 'error', message: error.message } 
+            ? { ...f, status: 'error', message: errorMessage } 
             : f
         ));
       }
