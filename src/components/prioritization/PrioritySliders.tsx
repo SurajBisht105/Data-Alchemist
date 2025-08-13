@@ -8,6 +8,20 @@ interface PriorityCriteria {
   weight: number;
 }
 
+interface PresetValues {
+  clientPriority: number;
+  taskCompletion: number;
+  workerBalance: number;
+  skillMatch: number;
+  phaseEfficiency: number;
+}
+
+interface Preset {
+  id: string;
+  label: string;
+  values: Partial<PresetValues>;
+}
+
 export default function PrioritySliders() {
   const { priorities, updatePriority, applyPreset } = usePriorities();
   const [selectedPreset, setSelectedPreset] = useState('custom');
@@ -45,7 +59,7 @@ export default function PrioritySliders() {
     }
   ];
 
-  const presets = [
+  const presets: Preset[] = [
     { id: 'custom', label: 'Custom', values: {} },
     { 
       id: 'maxFulfillment', 
@@ -85,8 +99,18 @@ export default function PrioritySliders() {
   const handlePresetChange = (presetId: string) => {
     setSelectedPreset(presetId);
     const preset = presets.find(p => p.id === presetId);
-    if (preset && preset.values && Object.keys(preset.values).length > 0) {
-      applyPreset(preset.values);
+    
+    // Only apply preset if it has values and it's not the custom preset
+    if (preset && preset.id !== 'custom' && preset.values) {
+      // Convert partial values to full record with defaults
+      const fullValues: Record<string, number> = {
+        clientPriority: preset.values.clientPriority || 50,
+        taskCompletion: preset.values.taskCompletion || 50,
+        workerBalance: preset.values.workerBalance || 50,
+        skillMatch: preset.values.skillMatch || 50,
+        phaseEfficiency: preset.values.phaseEfficiency || 50
+      };
+      applyPreset(fullValues);
     }
   };
 
