@@ -4,9 +4,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_GEMINI_API_KEY": "@gemini_api_key"
-  },
   "functions": {
     "src/app/api/ai/*.ts": {
       "maxDuration": 30
