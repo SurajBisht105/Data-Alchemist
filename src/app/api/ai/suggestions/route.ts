@@ -3,7 +3,7 @@ import { generateAIRules } from '@/lib/ai/rule-recommendations';
 // import { aiRateLimiter } from '@/lib/utils/rate-limiter';
 
 export async function POST(request: NextRequest) {
-  // Rate limiting
+  // Rate limiting - COMMENTED OUT
   // const clientIp = request.headers.get('x-forwarded-for') || 
   //                 request.headers.get('x-real-ip') || 
   //                 'anonymous';
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       { 
         suggestions,
         count: suggestions.length 
-      },
+      }
       // {
       //   headers: {
       //     'X-RateLimit-Limit': '10',
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Also support GET for checking status
-export async function GET(request: NextRequest) {
+export async function GET() {
   // const clientIp = request.headers.get('x-forwarded-for') || 
   //                 request.headers.get('x-real-ip') || 
   //                 'anonymous';
@@ -96,9 +96,7 @@ export async function GET(request: NextRequest) {
   
   return NextResponse.json({
     service: 'AI Suggestions',
-    status: 'operational',
+    status: 'operational'
     // rateLimit: status
   });
 }
-
-
