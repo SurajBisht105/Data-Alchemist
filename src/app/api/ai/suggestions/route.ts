@@ -1,31 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateAIRules } from '@/lib/ai/rule-recommendations';
-import { aiRateLimiter } from '@/lib/utils/rate-limiter';
+// import { aiRateLimiter } from '@/lib/utils/rate-limiter';
 
 export async function POST(request: NextRequest) {
   // Rate limiting
-  const clientIp = request.headers.get('x-forwarded-for') || 
-                  request.headers.get('x-real-ip') || 
-                  'anonymous';
-  const { allowed, remaining, resetTime } = aiRateLimiter.check(clientIp);
+  // const clientIp = request.headers.get('x-forwarded-for') || 
+  //                 request.headers.get('x-real-ip') || 
+  //                 'anonymous';
+  // const { allowed, remaining, resetTime } = aiRateLimiter.check(clientIp);
   
-  if (!allowed) {
-    return NextResponse.json(
-      { 
-        error: 'AI rate limit exceeded. Please try again later.',
-        retryAfter: Math.ceil((resetTime - Date.now()) / 1000)
-      },
-      { 
-        status: 429,
-        headers: {
-          'X-RateLimit-Limit': '10',
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': new Date(resetTime).toISOString(),
-          'Retry-After': Math.ceil((resetTime - Date.now()) / 1000).toString()
-        }
-      }
-    );
-  }
+  // if (!allowed) {
+  //   return NextResponse.json(
+  //     { 
+  //       error: 'AI rate limit exceeded. Please try again later.',
+  //       retryAfter: Math.ceil((resetTime - Date.now()) / 1000)
+  //     },
+  //     { 
+  //       status: 429,
+  //       headers: {
+  //         'X-RateLimit-Limit': '10',
+  //         'X-RateLimit-Remaining': '0',
+  //         'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+  //         'Retry-After': Math.ceil((resetTime - Date.now()) / 1000).toString()
+  //       }
+  //     }
+  //   );
+  // }
 
   try {
     const { data } = await request.json();
@@ -100,3 +100,4 @@ export async function GET(request: NextRequest) {
     rateLimit: status
   });
 }
+
