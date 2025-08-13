@@ -123,7 +123,7 @@ export default function AIChat() {
             {messages.length === 0 && (
               <div className="text-center text-gray-500 mt-8">
                 <div className="text-4xl mb-4">🤖</div>
-                <p className="mb-2 font-medium">Hi! I'm your AI assistant.</p>
+                <p className="mb-2 font-medium">Hi! I am your AI assistant.</p>
                 <p className="text-sm">Ask me anything about:</p>
                 <ul className="text-sm mt-2 space-y-1">
                   <li>• How to use this tool</li>
